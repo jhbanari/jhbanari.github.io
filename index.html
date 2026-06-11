@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jadyn Banaria — UHP Signature Work</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ivory:   #F9F6F1;
+      --blush:   #E8D5C4;
+      --plum:    #4A2E3A;
+      --dusty:   #9B7E8C;
+      --ink:     #2A1C22;
+      --light:   #F2EBE6;
+      --accent:  #7A3F52;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--ivory);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--ivory);
+      border-bottom: 1px solid var(--blush);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 60px;
+    }
+
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--plum);
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dusty);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(160deg, var(--ivory) 60%, var(--light) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #home::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(154,63,82,0.07) 0%, transparent 70%);
+      top: -100px;
+      right: -150px;
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dusty);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      font-weight: 300;
+      color: var(--plum);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--accent);
+    }
+
+    .hero-tagline {
+      max-width: 580px;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: #6B5260;
+      line-height: 1.75;
+      margin-bottom: 2.8rem;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .pill {
+      background: var(--blush);
+      color: var(--plum);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      font-weight: 500;
+    }
+
+    .hero-scroll {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dusty);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: var(--dusty);
+      opacity: 0.5;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--dusty);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 300;
+      color: var(--plum);
+      line-height: 1.15;
+      margin-bottom: 2.4rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 2.4rem;
+      opacity: 0.6;
+    }
+
+    p + p { margin-top: 1.2rem; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--ivory); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .about-card {
+      background: var(--light);
+      border-radius: 8px;
+      padding: 1.8rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    .about-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--plum);
+      margin-bottom: 0.6rem;
+    }
+
+    .about-card p {
+      font-size: 0.9rem;
+      color: #5C4756;
+      line-height: 1.65;
+      margin-top: 0;
+    }
+
+    /* ── PROCESS ── */
+    #process { background: var(--light); }
+
+    .process-steps {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1.5rem;
+      padding-bottom: 2.6rem;
+      position: relative;
+    }
+
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 27px;
+      top: 52px;
+      bottom: 0;
+      width: 1px;
+      background: var(--blush);
+    }
+
+    .step-num {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--plum);
+      color: var(--ivory);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .step-body h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--plum);
+      margin-bottom: 0.5rem;
+      padding-top: 0.6rem;
+    }
+
+    .step-body p {
+      font-size: 0.93rem;
+      color: #5C4756;
+      line-height: 1.7;
+      margin-top: 0;
+    }
+
+    /* ── PRODUCT ── */
+    #product { background: var(--ivory); }
+
+    .product-thesis-box {
+      background: var(--light);
+      border-radius: 10px;
+      padding: 2.2rem 2.4rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid var(--blush);
+    }
+
+    .product-thesis-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--plum);
+      margin-bottom: 0.5rem;
+      font-style: italic;
+    }
+
+    .thesis-meta {
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      color: var(--dusty);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .product-thesis-box p {
+      font-size: 0.93rem;
+      color: #5C4756;
+      margin-top: 0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1.4rem;
+      padding: 0.65rem 1.6rem;
+      background: var(--accent);
+      color: var(--ivory);
+      border-radius: 4px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn:hover { background: var(--plum); }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-outline:hover {
+      background: var(--accent);
+      color: var(--ivory);
+    }
+
+    .findings-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin-top: 1.8rem;
+    }
+
+    .finding-card {
+      background: var(--ivory);
+      border-radius: 8px;
+      padding: 1.4rem;
+      border-top: 3px solid var(--blush);
+    }
+
+    .finding-card .stat {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .finding-card p {
+      font-size: 0.85rem;
+      color: #5C4756;
+      margin-top: 0;
+    }
+
+    /* ── RESUME ── */
+    .resume-section {
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--blush);
+    }
+
+    .resume-section h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--plum);
+      margin-bottom: 0.3rem;
+    }
+
+    .resume-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--blush);
+    }
+
+    .resume-left { flex: 1; }
+
+    .resume-left h4 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--plum);
+      margin-bottom: 0.15rem;
+    }
+
+    .resume-left .org {
+      font-size: 0.83rem;
+      color: var(--dusty);
+      margin-bottom: 0.4rem;
+    }
+
+    .resume-left p {
+      font-size: 0.85rem;
+      color: #5C4756;
+      margin-top: 0;
+      max-width: 520px;
+    }
+
+    .resume-date {
+      font-size: 0.78rem;
+      color: var(--dusty);
+      white-space: nowrap;
+      padding-left: 1.5rem;
+      padding-top: 0.1rem;
+    }
+
+    /* ── REFLECTION ── */
+    #reflection { background: var(--light); }
+
+    .reflection-q {
+      margin-bottom: 2.2rem;
+    }
+
+    .reflection-q h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--accent);
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+
+    .reflection-q p {
+      font-size: 0.95rem;
+      color: #5C4756;
+      margin-top: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--plum);
+      color: var(--blush);
+      text-align: center;
+      padding: 2.5rem 1rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+    }
+
+    footer a {
+      color: var(--blush);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { gap: 1.2rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .findings-grid { grid-template-columns: 1fr; }
+      .resume-row { flex-direction: column; }
+      .resume-date { padding-left: 0; margin-top: 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Jadyn Banaria</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#product">Product</a></li>
+    <li><a href="#reflection">Reflection</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <p class="hero-eyebrow">UHP Signature Work · University of California, Davis</p>
+  <h1 class="hero-name">Jadyn<br><em>Banaria</em></h1>
+  <p class="hero-tagline">
+    Science &amp; Technology Studies &nbsp;·&nbsp; Sociology (Organizational Studies)<br>
+    Exploring how structural conditions — not just regulatory change — determine who truly gains reproductive autonomy.
+  </p>
+  <div class="hero-pills">
+    <span class="pill">Reproductive Justice</span>
+    <span class="pill">Mixed Methods Research</span>
+    <span class="pill">Feminist Epistemology</span>
+    <span class="pill">Health Policy</span>
+    <span class="pill">University Honors Program</span>
+  </div>
+  <div class="hero-scroll">Explore the work</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label">01 &nbsp;·&nbsp; About Me</p>
+    <h2 class="section-title">The person<br>behind the research</h2>
+    <div class="divider"></div>
+
+    <p>I'm a graduating senior at UC Davis double majoring in Science &amp; Technology Studies and Sociology with an Organizational Studies focus — a combination that has taught me to ask not just <em>what</em> a system does, but <em>who</em> it serves and under what conditions. I entered the University Honors Program as a first-year admit and have spent four years at the intersection of community organizing, data analysis, and critical theory.</p>
+
+    <p>My Signature Work grew directly out of that intersection. I have always cared about equity as something that has to be built — structurally, institutionally, relationally — not just declared. This thesis gave me the chance to bring that conviction into an empirical research project and test it against real data.</p>
+
+    <p>Outside the classroom, I serve as Student Director at the Student Recruitment and Retention Center (SRRC), where I oversee a team of 40+ interns and mentors and design programs for first-generation and underrepresented students. I also serve as Bridge Student Director and am president of a Filipino American student organization on campus — community-building is the through line of everything I do.</p>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Academic Background</h3>
+        <p>B.A. Science &amp; Technology Studies &amp; B.A. Sociology (Organizational Studies) · UC Davis · GPA 3.7 · University Honors Program · Expected June 2026</p>
+      </div>
+      <div class="about-card">
+        <h3>Signature Work Type</h3>
+        <p>Thesis in Major — a mixed-methods honors thesis examining college students' awareness of and attitudes toward over-the-counter birth control (Opill).</p>
+      </div>
+      <div class="about-card">
+        <h3>UHP Entry</h3>
+        <p>First-year admit to the University Honors Program at UC Davis. Fourth-year standing at time of Signature Work completion.</p>
+      </div>
+      <div class="about-card">
+        <h3>Research Interests</h3>
+        <p>Reproductive justice, feminist science studies, medicalization, organizational equity, and the gap between formal access and substantive autonomy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-inner">
+    <p class="section-label">02 &nbsp;·&nbsp; Process</p>
+    <h2 class="section-title">How the research<br>came together</h2>
+    <div class="divider"></div>
+
+    <p>This project unfolded over two academic quarters and moved through five overlapping stages — from the conceptual to the empirical to the interpretive. Here is how it developed.</p>
+
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">I</div>
+        <div class="step-body">
+          <h3>Preparation — Situating the Question</h3>
+          <p>I began by identifying the gap: after the FDA's 2023 approval of Opill as the first OTC oral contraceptive, almost no research centered college-aged people as a distinct population. I conducted an extensive literature review drawing on clinical research, reproductive justice scholarship (Ross &amp; Solinger), feminist epistemology (Haraway, Martin), and health policy analysis (Grossman &amp; Grindlay, Wynne et al.) to build the theoretical framework that would anchor the study.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">II</div>
+        <div class="step-body">
+          <h3>Design — Choosing a Mixed-Methods Approach</h3>
+          <p>I chose a mixed-methods, cross-sectional design because the research questions required both breadth and depth — statistical patterns to map the distribution of attitudes across demographic groups, and qualitative accounts to explain the mechanisms behind those patterns. The study population was UC Davis undergraduates who were biologically capable of pregnancy, recruited through the SONA research participation platform.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">III</div>
+        <div class="step-body">
+          <h3>Activities — Data Collection</h3>
+          <p>I designed and administered an anonymous online survey through Qualtrics. The instrument combined Likert-scale measures (awareness, knowledge confidence, safety concern, likelihood of use) with embedded and closing open-ended prompts that invited participants to reflect on their experiences, concerns, and social contexts. 56 undergraduates completed the full survey. IRB protocols ensured anonymity and participant protection throughout.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">IV</div>
+        <div class="step-body">
+          <h3>Synthesis — Analysis and Integration</h3>
+          <p>Quantitative data were analyzed using descriptive statistics; qualitative responses were analyzed using inductive thematic analysis following Braun and Clarke (2006). Integration occurred at the interpretive stage: I examined where quantitative patterns and qualitative themes converged, diverged, and complicated each other. Five major themes emerged — safety concerns, cost and insurance gaps, stigma, informational deficits, and informal knowledge networks.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">V</div>
+        <div class="step-body">
+          <h3>Presentation &amp; Impact — Writing the Thesis</h3>
+          <p>The final thesis situates empirical findings within the reproductive justice and feminist healthcare literatures to argue that OTC availability is a meaningful but insufficient advance — its equity effects are contingent on structural conditions that the regulatory change alone does not supply. The thesis advances a formal hypothesis for future research and outlines policy implications for insurance reform, public health education, and culturally responsive outreach.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section id="product">
+  <div class="section-inner">
+    <p class="section-label">03 &nbsp;·&nbsp; Product</p>
+    <h2 class="section-title">The thesis &amp;<br>key findings</h2>
+    <div class="divider"></div>
+
+    <div class="product-thesis-box">
+      <p class="thesis-meta">Honors Thesis · UC Davis · 2026</p>
+      <h3>Shaping Access and Autonomy: Determinants of College Students' Awareness and Attitudes Towards Over-the-Counter Birth Control</h3>
+      <p>This mixed-methods study examines what shapes undergraduate students' awareness of and attitudes toward Opill — the FDA-approved OTC oral contraceptive — and how those factors influence their willingness to use it. Using survey data from 56 UC Davis undergraduates, the study finds that formal availability does not automatically translate into confident, informed, or economically accessible use. Awareness, confidence, and willingness are patterned by structural conditions: uneven reproductive health education, insurance navigation barriers, cultural stigma, and racialized institutional trust.</p>
+      <a href="#" class="btn" onclick="alert('Upload your thesis PDF to Google Drive and replace this link with the shareable URL.'); return false;">View Full Thesis ↗</a>
+    </div>
+
+    <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:300; color:var(--plum); margin-bottom:0.3rem;">Selected Findings</h3>
+    <p style="font-size:0.88rem; color:var(--dusty);">From the quantitative and qualitative analyses</p>
+
+    <div class="findings-grid">
+      <div class="finding-card">
+        <div class="stat">60%</div>
+        <p>of respondents were aware of Opill's OTC approval before taking the survey — meaning 40% of a university population had no awareness of a policy change directly relevant to their reproductive healthcare.</p>
+      </div>
+      <div class="finding-card">
+        <div class="stat">64%</div>
+        <p>expressed interest in additional educational resources about OTC birth control — demonstrating real, self-identified informational need even among information-advantaged students.</p>
+      </div>
+      <div class="finding-card">
+        <div class="stat">36%</div>
+        <p>indicated some degree of unlikelihood to use OTC birth control, reflecting not irrationality but structurally grounded ambivalence: safety concerns, insurance confusion, and cultural stigma.</p>
+      </div>
+      <div class="finding-card">
+        <div class="stat">5</div>
+        <p>major qualitative themes: safety concerns and medical authority; cost and insurance gaps; stigma and privacy; informational deficits; and informal knowledge networks shaping risk perception.</p>
+      </div>
+    </div>
+
+    <!-- RESUME -->
+    <div class="resume-section">
+      <h3>Résumé</h3>
+      <p style="font-size:0.88rem; color:var(--dusty); margin-bottom:1.5rem;">Professional experience and academic background</p>
+
+      <div class="resume-row">
+        <div class="resume-left">
+          <h4>Student Director</h4>
+          <p class="org">Student Recruitment and Retention Center (SRRC) · UC Davis</p>
+          <p>Serve on the governing board as Administrative Chair and Secretary. Lead peer mentorship programs for first-generation and underrepresented students. Manage and supervise 40+ interns and mentors; design culturally relevant programming aligned with educational equity goals.</p>
+        </div>
+        <div class="resume-date">June 2025 – Present</div>
+      </div>
+
+      <div class="resume-row">
+        <div class="resume-left">
+          <h4>Administrative Coordinator</h4>
+          <p class="org">Student Recruitment and Retention Center (SRRC) · UC Davis</p>
+          <p>Coordinated internal and external calendars, designed all graphic and media materials, oversaw event logistics, and served as primary point of contact for interns.</p>
+        </div>
+        <div class="resume-date">Apr 2024 – June 2025</div>
+      </div>
+
+      <div class="resume-row">
+        <div class="resume-left">
+          <h4>Administrative Coordinator</h4>
+          <p class="org">Housing Is Your Right</p>
+          <p>Research and prepare grant applications for housing stability initiatives. Cultivate partnerships with banks and community stakeholders; support diverse populations through housing stabilization services.</p>
+        </div>
+        <div class="resume-date">June 2023 – Present</div>
+      </div>
+
+      <div class="resume-row">
+        <div class="resume-left">
+          <h4>Administrative Coordinator</h4>
+          <p class="org">Opportunity Orchard</p>
+          <p>Supported the launch of a student-focused nonprofit connecting underserved youth to funded afterschool programs. Created foundational administrative documents and initiated community outreach.</p>
+        </div>
+        <div class="resume-date">Apr 2024 – June 2025</div>
+      </div>
+
+      <div style="margin-top:1.5rem;">
+        <a href="#" class="btn btn-outline" onclick="alert('Upload your resume PDF to Google Drive and replace this link with the shareable URL.'); return false;">Download Full Résumé ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTION -->
+<section id="reflection">
+  <div class="section-inner">
+    <p class="section-label">04 &nbsp;·&nbsp; Reflection</p>
+    <h2 class="section-title">Looking back,<br>looking forward</h2>
+    <div class="divider"></div>
+
+    <div class="reflection-q">
+      <h3>What would I change about the process?</h3>
+      <p>The sample, while rich in qualitative texture, was limited to UC Davis undergraduates — a relatively resource-advantaged group. If I were doing this again, I would build in recruitment infrastructure from the start to reach community college students and young adults not enrolled in four-year universities, the populations most burdened by the structural barriers OTC approval was meant to address. I would also collect racial and ethnic identity through fixed categories alongside open-text entry, which would have allowed for more rigorous quantitative subgroup analysis without sacrificing the nuance of self-identification.</p>
+    </div>
+
+    <div class="reflection-q">
+      <h3>What would I keep the same?</h3>
+      <p>The mixed-methods design was the right call, and I would not change it. The decision to wait until the interpretive stage to integrate quantitative and qualitative findings — rather than trying to force them together earlier — gave each method room to breathe and produced triangulation that felt genuinely earned rather than procedural. I would also keep the theoretical framework. Grounding the study in reproductive justice scholarship and feminist epistemology gave the findings analytic depth that a purely descriptive study would not have had.</p>
+    </div>
+
+    <div class="reflection-q">
+      <h3>Would I recommend this kind of project to another student?</h3>
+      <p>Absolutely — and specifically to students who have something they genuinely want to know. The hardest part of the thesis was not the mechanics of data collection or the writing; it was tolerating the uncertainty of not knowing what the data would say. But that uncertainty is also where the intellectual aliveness is. If you care about the question enough, the process of not-yet-knowing is bearable. And the answer you arrive at feels like it belongs to you in a way that a literature review alone never does.</p>
+    </div>
+
+    <div class="reflection-q">
+      <h3>How has this project shaped my professional and academic development?</h3>
+      <p>This project taught me that I can hold complexity without collapsing it. Working across quantitative patterns and qualitative themes, across clinical literature and feminist theory, across what students said and what the data showed — that demanded a kind of intellectual patience I did not know I had. It also deepened my conviction that equity work requires structural analysis, not just compassion. The findings of this study are findings I intend to carry into my professional life, wherever it leads next.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Jadyn Banaria &nbsp;·&nbsp; University of California, Davis &nbsp;·&nbsp; UHP Signature Work 2026</p>
+  <p style="margin-top:0.5rem;"><a href="mailto:jadynbanaria@gmail.com">jadynbanaria@gmail.com</a> &nbsp;·&nbsp; 510-846-6234</p>
+</footer>
+
+<script>
+  // highlight active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
